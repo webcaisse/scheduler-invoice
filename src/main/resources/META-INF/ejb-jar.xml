@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd" version="3.0">
+  <enterprise-beans>
+    <message-driven>
+      <ejb-name>FtpTrackingBatchScheduler</ejb-name>
+      <ejb-class>fr.maileva.siclv2.invoice.cabestan.scheduler.FtpTrackingBatchScheduler</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <activation-config>
+        <activation-config-property>
+          <activation-config-property-name>cronTrigger</activation-config-property-name>
+          <activation-config-property-value>${ftpTrackingBatchScheduler.cronTrigger:0 */1 * * * ? 2099}</activation-config-property-value>
+        </activation-config-property>
+      </activation-config>
+    </message-driven>
+    <message-driven>
+      <ejb-name>EnvelopeTrackingBatchScheduler</ejb-name>
+      <ejb-class>fr.maileva.siclv2.invoice.cabestan.scheduler.EnvelopeTrackingBatchScheduler</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <activation-config>
+        <activation-config-property>
+          <activation-config-property-name>cronTrigger</activation-config-property-name>
+          <activation-config-property-value>${envelopeTrackingBatchScheduler.cronTrigger:0 */1 * * * ? 2099}</activation-config-property-value>
+        </activation-config-property>
+      </activation-config>
+    </message-driven>
+    <message-driven>
+      <ejb-name>DownloadInvoiceFilesScheduler</ejb-name>
+      <ejb-class>fr.maileva.siclv2.invoice.chorus.scheduler.DownloadInvoiceFilesScheduler</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <activation-config>
+        <activation-config-property>
+          <activation-config-property-name>cronTrigger</activation-config-property-name>
+          <activation-config-property-value>${downloadInvoiceFilesScheduler.cronTrigger:0 */1 * * * ? 2099}</activation-config-property-value>
+        </activation-config-property>
+      </activation-config>
+    </message-driven>
+  </enterprise-beans>
+</ejb-jar>
